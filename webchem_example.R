@@ -1,4 +1,5 @@
-library(webchem)
+
+###example from odor compound search  responsehttp://neuro.uni-konstanz.de/DoOR/default.htmllibrary(webchem)
 library(dplyr)
 head(lc50)
 
@@ -35,3 +36,7 @@ lc50_done <- dplyr::select(lc50_sub3,  cas, inchikey, XLogP)
 head(lc50_done)
 lc50_done$CID <- cts_convert(lc50_done$cas, from = "CAS", to = "PubChem CID", match= "first", verbose = FALSE)
 
+####convert cas number to inchikey, pubchemcid
+webchem::cts_convert("3380-34-5", "cas", "inchikey")
+webchem::cts_convert("triclosan", "chemical name", "inchikey")
+webchem::cts_convert("3380-34-5", "cas", "PubChem CID")
